@@ -1,0 +1,325 @@
+<div class="min-h-screen bg-gradient-to-b from-cafe-50 to-cafe-100">
+    <!-- Hero Section mejorado con título más dinámico -->
+    <div class="relative h-[40vh] md:h-[60vh] overflow-hidden">
+      <!-- Capa de imagen con efecto oscuro más sutil -->
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000" 
+             alt="Coffee Hero"
+             class="w-full h-full object-cover animate-kenburns brightness-75">
+        <!-- Gradiente oscuro semitransparente -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/30
+                    mix-blend-multiply"></div>
+        <!-- Viñeta más sutil -->
+        <div class="absolute inset-0 bg-radial-gradient opacity-60"></div>
+      </div>
+  
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-white p-4 backdrop-blur-[2px]">
+        <!-- Título principal con efectos mejorados -->
+        <div class="text-center relative">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-3 
+                     animate-titleSlideIn relative z-10 tracking-wider text-shadow-strong
+                     text-white/90">
+            <span class="inline-block animate-charFloat" style="animation-delay: 0ms;">L</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 100ms;">a</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 200ms;">&nbsp;</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 300ms;">E</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 400ms;">s</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 500ms;">e</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 600ms;">n</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 700ms;">c</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 800ms;">i</span>
+            <span class="inline-block animate-charFloat" style="animation-delay: 900ms;">a</span>
+          </h1>
+          <div class="h-1 bg-gradient-to-r from-white/60 to-white/40 
+                      transform origin-left scale-x-0 animate-expandLine 
+                      mt-4 rounded-full w-32"></div>
+        </div>
+  
+        <!-- Subtítulo mejorado -->
+        <p class="text-lg md:text-xl text-white/80 animate-fadeInUp delay-200 
+                  text-center max-w-lg mt-6 font-light tracking-wide
+                  drop-shadow-md backdrop-blur-sm">
+          Donde cada taza cuenta una historia
+          <span class="block mt-2 text-sm text-white/70 animate-pulse">
+            ~ Desde 2024 ~
+          </span>
+        </p>
+      </div>
+    </div>
+  
+    <!-- Categorías simplificadas con nuevos colores -->
+<div class="container mx-auto px-4 -mt-10 relative z-10">
+    <div class="flex gap-3 overflow-x-auto py-3 scrollbar-hide">
+     
+  
+        
+  
+    <!-- Productos destacados con nuevo diseño y efectos -->
+    <div class="container mx-auto px-4 py-16">
+      <!-- Título de sección más dinámico -->
+      <div class="relative mb-12 overflow-hidden">
+        <div class="flex flex-col items-start" *ngIf="titleKey">
+          <span class="text-cafe-400 text-lg font-medium mb-2 animate-slideRight">
+            ~ Descubre ~
+          </span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif relative z-10">
+            <span class="inline-block animate-titleChar" style="animation-delay: 0ms;">N</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 100ms;">u</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 200ms;">e</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 300ms;">s</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 400ms;">t</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 500ms;">r</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 600ms;">o</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 700ms;">s</span>
+          </h2>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif text-cafe-800 mt-2 relative z-10">
+            <span class="inline-block animate-titleChar" style="animation-delay: 800ms;">F</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 900ms;">a</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1000ms;">v</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1100ms;">o</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1200ms;">r</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1300ms;">i</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1400ms;">t</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1500ms;">o</span>
+            <span class="inline-block animate-titleChar" style="animation-delay: 1600ms;">s</span>
+          </h2>
+        </div>
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-cafe-200 rounded-full 
+                    opacity-20 animate-rotate"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-cafe-300 rounded-full 
+                    opacity-10 animate-float"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div *ngFor="let producto of productosDestacados" 
+             class="group relative bg-white rounded-[40px] overflow-hidden shadow-lg hover:shadow-xl 
+                    transition-all duration-300">
+          <div class="relative h-80 md:h-64">
+            <!-- Efecto de superposición al hover -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/40 
+        opacity-0 group-hover:opacity-100 transition-all duration-300 z-10
+        backdrop-blur-[1px]"></div>
+
+        <!-- Imagen con transición más suave -->
+        <img [src]="producto.imagenUrl" 
+        [alt]="producto.nombre"
+        class="w-full h-full object-cover transition-all duration-300 
+        group-hover:scale-[1.02] group-hover:brightness-75">
+
+            <!-- Precio con nuevo estilo -->
+            <div class="absolute top-4 right-4 z-20">
+              <div class="bg-white/95 backdrop-blur-sm text-cafe-800 px-5 py-2.5 rounded-[20px] 
+                          font-bold shadow-lg transform -rotate-3 group-hover:rotate-0 
+                          transition-transform duration-300">
+                {{ producto.precio | currency }}
+              </div>
+            </div>
+            
+            <!-- Rating -->
+            <div class="absolute top-4 left-4 z-20">
+              <div class="bg-white/95 backdrop-blur-sm text-cafe-800 px-4 py-2 rounded-[15px] 
+                          font-medium shadow-lg flex items-center gap-1.5">
+                <i class="fas fa-star text-yellow-500"></i>
+                {{ producto.rating }}
+              </div>
+            </div>
+            
+            <!-- Información superpuesta en hover con mejor legibilidad -->
+            <div class="absolute inset-0 flex flex-col justify-end p-6 translate-y-full 
+                        group-hover:translate-y-0 transition-all duration-300 z-20">
+              <h3 class="text-2xl font-serif text-white mb-2 drop-shadow-lg">{{ producto.nombre }}</h3>
+              <p class="text-white/95 mb-4 opacity-0 group-hover:opacity-100 
+                        transition-opacity duration-300 text-shadow-sm backdrop-blur-[1px]">
+                {{ producto.descripcion }}
+              </p>
+              <div class="flex gap-2">
+                <button (click)="agregarAlCarrito(producto)"
+                        class="flex-1 bg-white/95 backdrop-blur-sm text-cafe-800 py-3 px-6 rounded-[20px] 
+                               hover:bg-white transition-all duration-300 transform 
+                               group-hover:scale-[1.02] font-medium
+                               shadow-lg">
+                  Ordenar Ahora
+                </button>
+                <button (click)="verDetalle(producto)"
+                        class="bg-cafe-600/90 backdrop-blur-sm text-white py-3 px-4 rounded-[20px] 
+                               hover:bg-cafe-700 transition-all duration-300 transform 
+                               group-hover:scale-[1.02]
+                               shadow-lg">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  
+    <!-- Sección de experiencia con imagen de fondo -->
+    <div class="bg-cafe-50 py-16 mt-12 relative">
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=2000" 
+           alt="Coffee Experience"
+           class="absolute inset-0 w-full h-full object-cover opacity-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center p-6 bg-white rounded-[35px] shadow-lg hover:shadow-xl 
+                      transform hover:-translate-y-1 transition-all duration-300">
+            <i class="fas fa-coffee text-4xl text-cafe-500 mb-4"></i>
+            <h3 class="text-xl font-serif text-cafe-800 mb-2">Café de Especialidad</h3>
+            <p class="text-cafe-600">Selección premium de granos</p>
+          </div>
+          <!-- Repite para más características -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    @keyframes kenburns {
+      0% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(-50%); }
+      50% { transform: translateY(-10px) translateX(-50%); }
+    }
+  
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+    .animate-kenburns {
+      animation: kenburns 20s ease-out forwards;
+    }
+  
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+  
+    .animate-fadeInDown {
+      animation: fadeInDown 1s ease-out forwards;
+    }
+  
+    .animate-fadeInUp {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+  
+    .animate-fadeIn {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+  
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-500 { animation-delay: 500ms; }
+    .delay-600 { animation-delay: 600ms; }
+    .delay-700 { animation-delay: 700ms; }
+  
+    @keyframes charFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+  
+    @keyframes titleSlideIn {
+      from { 
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    @keyframes expandWidth {
+      from { 
+        width: 0;
+        opacity: 0;
+      }
+      to { 
+        width: 6rem;
+        opacity: 1;
+      }
+    }
+  
+    .animate-charFloat {
+      animation: charFloat 3s ease-in-out infinite;
+      display: inline-block;
+      transform-origin: center;
+    }
+  
+    .animate-titleSlideIn {
+      animation: titleSlideIn 1s ease-out forwards;
+    }
+  
+    .animate-expandWidth {
+      animation: expandWidth 1.5s ease-out forwards;
+      animation-delay: 1s;
+    }
+  
+    /* Efecto de brillo más sutil */
+    .font-serif {
+      text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 20px rgba(255, 255, 255, 0.1);
+    }
+  
+    /* Sombra más sutil para el texto */
+    .text-shadow-strong {
+      text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .drop-shadow-md {
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+  
+    /* Efecto de viñeta radial más sutil */
+    .bg-radial-gradient {
+      background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
+    }
+  
+    @keyframes titleChar {
+      0% { 
+        opacity: 0;
+        transform: translateY(40px) rotate(10deg);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+  
+    .animate-titleChar {
+      animation: titleChar 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      display: inline-block;
+      transform-origin: bottom;
+      opacity: 0;
+    }
+  
+    @keyframes slideRight {
+      from { 
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    .animate-slideRight {
+      animation: slideRight 1s ease-out forwards;
+    }
+  </style>
+  

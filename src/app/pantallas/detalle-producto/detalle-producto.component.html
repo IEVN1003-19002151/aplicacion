@@ -1,0 +1,92 @@
+<div class="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-white to-[#F5E6D3]">
+    <!-- Header minimalista -->
+    <div class="fixed top-0 left-0 z-50 p-4">
+      <button class="group p-3 rounded-full bg-white/80 backdrop-blur-sm hover:bg-[#6F4E37]/10 
+                     transition-all duration-500 shadow-lg" (click)="volver()">
+        <i class="fas fa-arrow-left text-[#6F4E37] group-hover:-translate-x-1 transition-transform duration-300"></i>
+      </button>
+    </div>
+  
+    <div class="max-w-4xl mx-auto">
+      <div *ngIf="!loading && producto" class="animate-slideUp">
+        <!-- Contenedor de imagen con efectos -->
+        <div class="group relative h-[70vh] w-full overflow-hidden">
+          <img [src]="producto.imagenUrl" 
+               [alt]="producto.nombre"
+               class="w-full h-full object-cover transition-transform duration-1000 
+                      group-hover:scale-105 filter group-hover:brightness-110">
+          
+          <!-- Overlay gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+        </div>
+  
+        <!-- Tarjeta de información -->
+        <div class="bg-white/80 backdrop-blur-xl rounded-t-[2.5rem] p-8 -mt-20 relative z-10 
+                    transform transition-all duration-500 hover:shadow-xl">
+          <!-- Precio y nombre -->
+          <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-[#333] leading-tight">{{producto.nombre}}</h1>
+            <div class="group">
+              <p class="text-4xl font-bold bg-gradient-to-r from-[#6F4E37] to-[#8B6E4E] 
+                        text-transparent bg-clip-text transform transition-all duration-300 
+                        group-hover:scale-110">
+                ${{producto.precio}}
+              </p>
+            </div>
+          </div>
+  
+          <!-- Descripción -->
+          <p class="text-[#666] leading-relaxed mb-8 text-lg transition-all duration-300 
+                    hover:text-[#333] p-4 rounded-xl hover:bg-[#F5E6D3]/20">
+            {{producto.descripcion}}
+          </p>
+  
+          <!-- Control de cantidad -->
+          <div class="bg-gradient-to-r from-[#FFF8E7] to-white p-6 rounded-2xl mb-8 
+                      transform transition-all duration-300 hover:shadow-lg">
+            <div class="flex items-center justify-between">
+              <span class="font-medium text-[#6F4E37] text-lg">Cantidad</span>
+              <div class="flex items-center gap-6">
+                <button (click)="cambiarCantidad(-1)"
+                        class="group w-12 h-12 rounded-full bg-[#6F4E37] text-white flex items-center justify-center
+                               transition-all duration-300 hover:bg-[#8B6E4E] hover:shadow-lg active:scale-95">
+                  <i class="fas fa-minus group-hover:scale-110 transition-transform duration-300"></i>
+                </button>
+                <span class="font-semibold text-2xl w-10 text-center text-[#6F4E37]">{{cantidad}}</span>
+                <button (click)="cambiarCantidad(1)"
+                        class="group w-12 h-12 rounded-full bg-[#6F4E37] text-white flex items-center justify-center
+                               transition-all duration-300 hover:bg-[#8B6E4E] hover:shadow-lg active:scale-95">
+                  <i class="fas fa-plus group-hover:scale-110 transition-transform duration-300"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Botón de agregar al carrito -->
+          <button (click)="agregarAlCarrito()"
+                  class="group w-full bg-gradient-to-r from-[#6F4E37] to-[#8B6E4E] text-white 
+                         py-5 rounded-2xl font-medium text-lg overflow-hidden relative
+                         transition-all duration-500 hover:shadow-xl">
+            <div class="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
+                        transition-transform duration-500 origin-left mix-blend-overlay"></div>
+            <div class="relative flex items-center justify-center gap-3">
+              <i class="fas fa-shopping-cart text-xl group-hover:rotate-12 transition-transform duration-500"></i>
+              <span class="group-hover:tracking-wider transition-all duration-500">Agregar al carrito</span>
+            </div>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Loading animado -->
+      <div *ngIf="loading" class="flex justify-center items-center h-[70vh]">
+        <div class="relative">
+          <div class="w-16 h-16 rounded-full border-4 border-[#6F4E37]/20 border-t-[#6F4E37] 
+                      animate-spin"></div>
+          <div class="absolute inset-0 rounded-full border-4 border-transparent 
+                      animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

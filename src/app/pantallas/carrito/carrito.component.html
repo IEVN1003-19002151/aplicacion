@@ -1,0 +1,361 @@
+<div class="min-h-screen bg-[#F5E6D3] animate-fadeIn">
+    <!-- Encabezado con título animado -->
+    <div class="bg-gradient-to-r from-[#8B593C] via-[#6F4E37] to-[#8B593C] text-white p-6">
+      <div class="relative mb-8 overflow-hidden">
+        <div class="flex flex-col items-center">
+          <span class="text-[#F5E6D3] text-lg font-medium mb-2 animate-slideRight">
+            ~ Tu Pedido ~
+          </span>
+          <h1 class="text-4xl md:text-5xl font-serif relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-8 h-8 animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
+            <span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 0ms;">T</span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 100ms;">i</span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 200ms;">c</span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 300ms;">k</span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 400ms;">e</span>
+              <span class="inline-block animate-titleChar" style="animation-delay: 500ms;">t</span>
+  
+            </span>
+          </h1>
+          <div class="h-1 bg-gradient-to-r from-[#F5E6D3] to-white/70 
+                      transform origin-left scale-x-0 animate-expandLine 
+                      mt-4 rounded-full w-32"></div>
+        </div>
+        <div class="absolute -top-10 -right-10 w-40 h-40 bg-white rounded-full 
+                    opacity-10 animate-rotate"></div>
+        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-white rounded-full 
+                    opacity-10 animate-float"></div>
+      </div>
+    </div>
+  
+    <!-- Lista de productos con animaciones -->
+    <div class="bg-white shadow-lg rounded-lg m-4 animate-slideUp">
+      <div *ngFor="let item of items; let i = index" 
+           class="p-4 border-b border-[#F5E6D3] hover:bg-[#F5E6D3]/20 transition-all duration-500"
+           [ngClass]="{'animate-slideIn': true}"
+           [style.animation-delay]="i * 150 + 'ms'">
+        <div class="flex gap-4">
+          <!-- Imagen del producto con hover effect -->
+          <div class="w-24 h-24 rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+            <img [src]="getImagenUrl(item)" 
+                 [alt]="item.nombre"
+                 class="w-full h-full object-cover hover:opacity-90 transition-opacity">
+          </div>
+  
+          <!-- Detalles del producto -->
+          <div class="flex-grow flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+              <h3 class="text-lg font-medium text-[#8B593C] hover:text-[#6F4E37] transition-colors">{{item.nombre}}</h3>
+              <p class="text-lg font-semibold text-[#8B593C]">${{(item.precio * item.cantidad).toFixed(2)}}</p>
+            </div>
+            
+            <div class="flex items-center justify-between mt-2">
+              <!-- Controles de cantidad con efectos -->
+              <div class="flex items-center bg-[#F5E6D3] rounded-lg overflow-hidden">
+                <button (click)="actualizarCantidad(item.id, item.tipo, item.cantidad - 1)"
+                        class="w-8 h-8 flex items-center justify-center text-[#8B593C] hover:bg-[#E6D5C4] active:scale-95 transition-all">
+                  -
+                </button>
+                <span class="w-8 text-center text-[#8B593C] font-medium">{{item.cantidad}}</span>
+                <button (click)="actualizarCantidad(item.id, item.tipo, item.cantidad + 1)"
+                        class="w-8 h-8 flex items-center justify-center text-[#8B593C] hover:bg-[#E6D5C4] active:scale-95 transition-all">
+                  +
+                </button>
+              </div>
+  
+              <!-- Botón eliminar con efecto -->
+              <button (click)="eliminarItem(item.id, item.tipo)" 
+                      class="text-red-500 hover:text-red-600 p-2 hover:bg-red-50 rounded-full transition-all duration-300 transform hover:rotate-12">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Total y botón de pago con animaciones -->
+    <div class="bg-white shadow-lg rounded-lg m-4 p-6 animate-slideUp" style="animation-delay: 300ms">
+      <div class="flex justify-between items-center mb-4">
+        <span class="text-lg text-[#8B593C]">Total a pagar</span>
+        <span class="text-2xl font-bold text-[#8B593C] animate-pulse">
+          ${{total.toFixed(2)}}
+        </span>
+      </div>
+      
+      <button (click)="procederAlPago()"
+              class="w-full bg-[#8B593C] text-white py-4 rounded-lg flex items-center justify-center gap-3
+                     hover:bg-[#6F4E37] transform hover:scale-[1.03] active:scale-[0.98] 
+                     transition-all duration-500 hover:shadow-xl animate-pulse">
+        <svg class="w-5 h-5 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+        </svg>
+        Realizar Pedido
+      </button>
+    </div>
+  
+    <!-- Ticket minimizado -->
+    <div *ngIf="mostrarTicket && ticketMinimizado" 
+         class="fixed bottom-20 right-4 z-50 bg-white rounded-lg shadow-lg cursor-pointer"
+         (click)="maximizarTicket()">
+      <div class="p-4 flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#8B593C]">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+        </svg>
+        <span class="text-[#8B593C] font-medium">Ver Ticket #{{numeroTicket}}</span>
+      </div>
+    </div>
+  
+    <!-- Overlay del Ticket -->
+    <div *ngIf="mostrarTicket && !ticketMinimizado" 
+         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+        <!-- Barra superior con botones -->
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-medium text-[#8B593C]">Ticket de Compra</h2>
+          <div class="flex gap-2">
+            <button (click)="minimizarTicket()" 
+                    class="p-1 hover:bg-gray-100 rounded-full transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-[#8B593C]">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+              </svg>
+            </button>
+            <button (click)="cerrarTicket()" 
+                    class="p-1 hover:bg-gray-100 rounded-full transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-[#8B593C]">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+  
+        <!-- Contenido del ticket con animaciones -->
+        <div id="ticket-container" class="animate-fadeIn">
+          <!-- Encabezado del Ticket -->
+          <div class="text-sm text-gray-600 mb-4 animate-slideDown" style="animation-delay: 100ms">
+            <p class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-[#8B593C]">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+              Fecha: {{fechaCompra}}
+            </p>
+            <p class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-[#8B593C]">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+              </svg>
+              No. Ticket: {{numeroTicket}}
+            </p>
+          </div>
+  
+          <!-- Línea decorativa -->
+          <div class="border-b-2 border-dashed border-[#8B593C] my-4 animate-expandLine"></div>
+  
+          <!-- Lista de productos -->
+          <div class="space-y-2 mb-4">
+            <div *ngFor="let item of ticketItems; let i = index" 
+                 class="flex justify-between text-sm animate-slideIn hover:bg-[#F5E6D3]/10 p-2 rounded-lg transition-colors"
+                 [style.animation-delay]="i * 100 + 'ms'">
+              <span>{{item.nombre}} x{{item.cantidad}}</span>
+              <span class="font-medium">${{(item.precio * item.cantidad).toFixed(2)}}</span>
+            </div>
+          </div>
+  
+          <!-- Línea decorativa -->
+          <div class="border-b-2 border-dashed border-[#8B593C] my-4 animate-expandLine" style="animation-delay: 300ms"></div>
+  
+          <!-- Total -->
+          <div class="flex justify-between font-bold text-lg text-[#8B593C] mb-6 animate-slideUp" style="animation-delay: 400ms">
+            <span>Total</span>
+            <span class="animate-pulse">${{ticketTotal.toFixed(2)}}</span>
+          </div>
+  
+          <!-- Mensaje de agradecimiento -->
+          <div class="text-center text-sm text-gray-600 mb-6 animate-fadeIn" style="animation-delay: 500ms">
+            <p class="text-[#8B593C] font-medium">¡Gracias por tu compra!</p>
+            <p class="text-gray-500">Tu pedido está siendo procesado</p>
+          </div>
+        </div>
+  
+        <!-- Botones de acción -->
+        <div class="flex flex-col gap-3 mt-6">
+          <button (click)="descargarTicket()" 
+                  class="w-full bg-[#8B593C] text-white py-2 rounded-lg hover:bg-[#6F4E37] 
+                         transition-colors duration-300 flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            Descargar PDF
+          </button>
+  
+          <button (click)="enviarTicketPorWhatsApp()" 
+                  class="w-full bg-[#8B593C] text-white py-2 rounded-lg hover:bg-[#6F4E37] 
+                         transition-colors duration-300 flex items-center justify-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+            </svg>
+            Enviar por WhatsApp
+          </button>
+  
+          <button (click)="cerrarTicket()" 
+                  class="w-full border-2 border-[#8B593C] text-[#8B593C] py-2 rounded-lg
+                         hover:bg-[#8B593C] hover:text-white transition-colors duration-300">
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+  
+    .animate-slideDown {
+      animation: slideDown 0.8s ease-out forwards;
+    }
+  
+    .animate-slideUp {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+  
+    .animate-slideIn {
+      animation: slideIn 0.7s ease-out forwards;
+    }
+  
+    .animate-gradient {
+      animation: gradient 4s ease infinite;
+    }
+  
+    .animate-spin-slow {
+      animation: spin 4s linear infinite;
+    }
+  
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  
+    @keyframes titleChar {
+      0% { 
+        opacity: 0;
+        transform: translateY(40px) rotate(10deg);
+      }
+      100% { 
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+  
+    @keyframes slideRight {
+      from { 
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  
+    @keyframes expandLine {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+  
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  
+    .animate-titleChar {
+      animation: titleChar 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      opacity: 0;
+      display: inline-block;
+      transform-origin: bottom;
+    }
+  
+    .animate-slideRight {
+      animation: slideRight 1s ease-out forwards;
+    }
+  
+    .animate-expandLine {
+      animation: expandLine 1s ease-out forwards;
+      animation-delay: 0.7s;
+    }
+  
+    .animate-rotate {
+      animation: rotate 20s linear infinite;
+    }
+  
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+  
+    .font-serif {
+      text-shadow: 
+        0 0 1px rgba(255, 255, 255, 0.2),
+        0 0 2px rgba(255, 255, 255, 0.2),
+        0 0 4px rgba(255, 255, 255, 0.2);
+      letter-spacing: -0.02em;
+    }
+  </style>
+  

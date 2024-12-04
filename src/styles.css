@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Animaciones suaves */
+.transition-all {
+  transition-duration: 300ms;
+}
+
+
