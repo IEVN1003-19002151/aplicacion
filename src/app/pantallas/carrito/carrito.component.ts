@@ -259,11 +259,26 @@ async enviarTicketPorWhatsApp(esAutomatico: boolean = false) {
         const mensaje = this.crearMensajeTicket();
         const numeroWhatsApp = "4778923729"; // Número fijo del negocio
         
-        // Usar WhatsApp Web API con número específico
-        const whatsappUrl = `https://wa.me/52${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        // Detectar si es dispositivo móvil
+        const esMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         
-        // Abrir WhatsApp Web en una nueva ventana
-        window.open(whatsappUrl, '_blank');
+        // Construir URL según el dispositivo
+        let whatsappUrl = '';
+        if (esMobile) {
+            // URL para apps móviles de WhatsApp
+            whatsappUrl = `whatsapp://send?phone=52${numeroWhatsApp}&text=${encodeURIComponent(mensaje)}`;
+        } else {
+            // URL para WhatsApp Web
+            whatsappUrl = `https://wa.me/52${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+        }
+        
+        // Intentar abrir WhatsApp
+        const abrirWhatsapp = window.open(whatsappUrl, '_blank');
+        
+        // Si no se pudo abrir, intentar con el enlace alternativo
+        if (!abrirWhatsapp || abrirWhatsapp.closed || typeof abrirWhatsapp.closed == 'undefined') {
+            window.location.href = whatsappUrl;
+        }
         
         if (!esAutomatico) {
             this.notificacionService.mostrarNotificacion(
@@ -275,7 +290,8 @@ async enviarTicketPorWhatsApp(esAutomatico: boolean = false) {
         console.error('Error al abrir WhatsApp:', error);
         if (!esAutomatico) {
             this.notificacionService.mostrarNotificacion(
-                'No se pudo abrir WhatsApp. Por favor, intente más tarde.',
+                'No se pudo abrir WhatsApp. Por favor, copie el siguiente enlace: ' + 
+                `https://wa.me/524778923729?text=${encodeURIComponent(this.crearMensajeTicket())}`,
                 'error'
             );
         }

@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:prod": "ng build --configuration production",
+    "start-pwa": "npm run build:prod && cd dist/aplicacion && http-server -p 8080 --cors -a 0.0.0.0 -c-1"
   },
   "private": true,
   "dependencies": {
